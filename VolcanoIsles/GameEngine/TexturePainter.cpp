@@ -27,8 +27,10 @@ void g::TexturePainter::draw_rectangle(int x, int y, int width, int height, cons
 	SDL_RenderDrawRect(renderer_, &rec);
 }
 
-void g::TexturePainter::draw_texture(int x, int y, int width, int height, SDL_Texture* texture, double rotation)
+void g::TexturePainter::draw_texture(int x, int y, int width, int height,int alpha, SDL_Texture* texture, double rotation)
 {
+	SDL_SetTextureAlphaMod(texture, alpha);
+	SDL_Rect source = rect(0, 0, width, height);
 	SDL_Rect r = rect(x, y, width, height);
-	SDL_RenderCopyEx(renderer_, texture, &r, &r, rotation, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer_, texture, &source, &r, rotation, nullptr, SDL_FLIP_NONE);
 }

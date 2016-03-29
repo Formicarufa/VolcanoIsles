@@ -13,7 +13,7 @@ namespace g
 
 		Image(int x, int y, const std::string& texture_name)
 			: x_(x),
-			y_(y), width_(0), height_(0), rotation_(0), texture_(nullptr),
+			y_(y), width_(0), height_(0), alpha_(255), rotation_(0), texture_(nullptr),
 			texture_name_(texture_name)
 		{
 		}
@@ -30,7 +30,7 @@ namespace g
 				texture_ = painter.get_texture_(texture_name_);
 				SDL_QueryTexture(texture_, nullptr, nullptr, &width_, &height_);
 			}
-			painter.draw_texture(x_+x0,y_+y0,width_,height_,texture_,rotation_);
+			painter.draw_texture(x_+x0,y_+y0,width_,height_,alpha_,texture_,rotation_);
 		}
 		double rotation() const
 		{
@@ -49,10 +49,14 @@ namespace g
 		int y() override {
 			return y_;
 		}
+		void set_alpha(int alpha) {
+			alpha_ = alpha;
+		}
 	private:
 		int x_, y_;
 		int width_;
 		int height_;
+		int alpha_;
 		double rotation_;
 		SDL_Texture* texture_;
 		std::string texture_name_;

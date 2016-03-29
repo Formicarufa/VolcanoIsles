@@ -99,12 +99,13 @@ private:
 		{
 			for (std::size_t n_index : node->neighbour_indices())
 			{
-				if (n_index>index)
+				if (n_index > index)
 				{
 					connect_nodes(node.get(), get_node_at(n_index));
 				}
-			
-			index++;
+
+			}
+				index++;
 		}
 	}
 };

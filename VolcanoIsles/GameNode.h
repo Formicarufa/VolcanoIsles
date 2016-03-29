@@ -6,6 +6,7 @@
 #include <memory>
 #include "GameNodeGraphics.h"
 #include "IslandType.h"
+#include "GameEngine\Image.h"
 
 class GameNode : public g::GraphicsContainer
 {
@@ -28,11 +29,19 @@ public:
 		owner_ = owner;
 		node_graphics_->set_owner(owner);
 	}
+	void set_pointing_to_node(GameNode* node) {
+		pointing_to_node_ = node;
+	}
+	GameNode* pointing_to_node() {
+		return pointing_to_node_;
+	}
 private:
 	std::vector<std::size_t> neighbour_indices_;
+	std::unique_ptr<g::Image> arrow_graphics_;
 	std::unique_ptr<GameNodeGraphics> node_graphics_;
 	IslandType island_type_;
 	Owner owner_;
+	GameNode* pointing_to_node_;
 
 };
 

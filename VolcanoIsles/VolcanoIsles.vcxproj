@@ -280,6 +280,7 @@
     <None Include="SDL2_image.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\arrow.png" />
     <Image Include="assets\island_spritesheet.png" />
   </ItemGroup>
   <ItemGroup>
