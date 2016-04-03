@@ -21,10 +21,13 @@ void g::GraphicsContainer::remove_child(Graphics* g)
 	g->set_parent(nullptr);
 }
 
- void g::GraphicsContainer::draw(TexturePainter & painter, int x0, int y0) 
+void g::GraphicsContainer::draw(TexturePainter & painter, int x0, int y0)
 {
 	for (auto gr : graphics_list_)
 	{
-		gr->draw(painter,x0+x_,y0+y_);
+		if (gr->visible())
+		{
+			gr->draw(painter, x0 + x_, y0 + y_);
+		}
 	}
 }

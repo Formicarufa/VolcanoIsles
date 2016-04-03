@@ -22,9 +22,12 @@ namespace g
 
 		void draw(TexturePainter& painter, int x0, int y0) override
 		{
-			for (auto & gr: graphics_list_)
+			for (auto & gr : graphics_list_)
 			{
-				gr->draw(painter, x0 + x_, y0 + y_);
+				if (gr->visible())
+				{
+					gr->draw(painter, x0 + x_, y0 + y_);
+				}
 			}
 		}
 

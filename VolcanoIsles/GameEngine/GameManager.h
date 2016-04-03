@@ -6,6 +6,7 @@
 #include "TexturePainter.h"
 #include "Common.h"
 #include "Graphics.h"
+#include "MouseMotionHandler.h"
 
 namespace g
 {
@@ -16,7 +17,7 @@ namespace g
 	public:
 
 		GameManager(std::string game_name, int height, int width)
-			: current_state_(), name_(game_name), height_(height), window_(nullptr), renderer_(nullptr), running_(true), width_(width), painter_(nullptr),background_color_(colors::black())
+			: current_state_(), name_(game_name), height_(height), window_(nullptr), renderer_(nullptr), running_(true), width_(width), painter_(nullptr), background_color_(colors::black())
 		{
 
 		}
@@ -48,19 +49,20 @@ namespace g
 		{
 			auto & handlers = current_state_->click_handlers();
 			auto copy(handlers);
-			for (auto h: copy)
+			for (auto h : copy)
 			{
 				CollisionComputable* testedObject = h.first;
+				if (!testedObject->visible()) continue;
 				auto x = button.x;
 				auto y = button.y;
 				Graphics* parent = testedObject->parent();
-				while (parent!= nullptr)
+				while (parent != nullptr)
 				{
 					x -= parent->x();
 					y -= parent->y();
 					parent = parent->parent();
 				}
-				if (testedObject->point_collision(x,y))
+				if (testedObject->point_collision(x, y))
 				{
 					h.second->handle_mouse_event(x, y);
 				}
@@ -77,6 +79,44 @@ namespace g
 			}
 		}
 
+		void handle_mouse_motion(SDL_MouseMotionEvent& motion) const
+		{
+			auto & handlers = current_state_->mouse_motion_handlers();
+			auto copy(handlers);
+			for (auto h : copy)
+			{
+				auto x = motion.x;
+				auto y = motion.y;
+				auto obj = h.first;
+				if (!obj->visible()) continue;
+				auto handler = h.second;
+				auto parent = obj->parent();
+				while (parent != nullptr)
+				{
+					x -= parent->x();
+					y -= parent->y();
+				}
+				auto collision = obj->point_collision(x, y);
+				auto mouse_over = obj->is_mouse_over();
+				if (collision)
+				{
+					if (! mouse_over)
+					{
+						obj->set_mouse_over(true);
+						handler->mouse_over();
+					}
+				} else
+				{
+					if (mouse_over)
+					{
+						obj->set_mouse_over(false);
+						handler->mouse_out();
+					}
+				}
+
+			}
+		}
+
 		void handle_events()
 		{
 			SDL_Event event;
@@ -89,6 +129,9 @@ namespace g
 					break;
 				case SDL_MOUSEBUTTONUP:
 					handle_mouse_click(event.button);
+					break;
+				case SDL_MOUSEMOTION:
+					handle_mouse_motion(event.motion);
 					break;
 				case SDL_KEYDOWN:
 					handle_key_down(event.key.keysym);
@@ -112,7 +155,7 @@ namespace g
 		{
 			SDL_RenderClear(renderer_);
 			auto container = current_state_->graphics_container();
-			container.draw(painter_,0,0);
+			container.draw(painter_, 0, 0);
 			SDL_RenderPresent(renderer_);
 		}
 

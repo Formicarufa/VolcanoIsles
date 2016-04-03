@@ -5,6 +5,8 @@
 #include "Game.h"
 #include "GameEngine/GameManager.h"
 #include "VolcanoGameState.h"
+#include <ctime>
+#include "GameConstants.h"
 
 
 SDL_Window* g_pWindow = 0;
@@ -16,7 +18,9 @@ int main(int argc, char * args[])
 	//g.run();
 	//SDL_Delay(5000);
 	//SDL_Quit();
-	g::GameManager volcano_game_manager("VOLCANO ISLES", 650, 850);
+	srand(static_cast<unsigned int>(time(nullptr)));
+	
+	g::GameManager volcano_game_manager("VOLCANO ISLES", gameconst::HEIGHT, gameconst::WIDTH);
 	volcano_game_manager.set_background_color(colors::white());
 	auto volcanoGame = std::make_unique<VolcanoGameState>();
 	volcanoGame->init();

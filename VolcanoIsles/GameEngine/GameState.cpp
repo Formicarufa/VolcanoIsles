@@ -23,6 +23,11 @@ void g::GameState::addMouseClickHandler(CollisionComputable* c, MouseHandler* h)
 	click_vector_.push_back(std::make_pair(c, h));
 }
 
+void g::GameState::addMouseMotionHandler(CollisionComputable* c, MouseMotionHandler* h)
+{
+	mouse_move_vector_.push_back(std::make_pair(c, h));
+}
+
 void g::GameState::removeGraphics(Graphics* g)
 {	
 	root_container_.remove_child(g);
@@ -62,4 +67,15 @@ const std::vector<g::KeyHandler*> & g::GameState::key_handlers() const
 const std::vector<std::pair<g::CollisionComputable*, g::MouseHandler*>> & g::GameState::click_handlers() const
 {
 	return click_vector_;
+}
+
+void g::GameState::removeMouseMotionHandler(CollisionComputable* c, MouseMotionHandler* h)
+{
+	auto it = std::remove_if(mouse_move_vector_.begin(), mouse_move_vector_.end(), [&c, &h](auto &p) {return p.first == c && p.second == h;});
+	mouse_move_vector_.erase(it, mouse_move_vector_.end());
+}
+
+const std::vector<std::pair<g::CollisionComputable*, g::MouseMotionHandler*>> & g::GameState::mouse_motion_handlers() const
+{
+	return mouse_move_vector_;
 }

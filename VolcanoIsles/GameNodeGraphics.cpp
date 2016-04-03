@@ -1,36 +1,13 @@
 ﻿#include "GameNodeGraphics.h"
-
-SDL_Rect GameNodeGraphics::get_source_rect()
+#include "GameEngine/Image.h"
+#include "GameNode.h"
+GameNodeGraphics::GameNodeGraphics( GameNode* node): GraphicsContainer(node->x(), node->y()), node_(node), last_target_node_(nullptr)
 {
-	int c = gameconst::island_size;
-	int x = 0;
-	switch (owner_)
-	{
-	case NONE:
-		x = 0;
-		break;
-	case PLAYER:
-		x = 2 * c;
-		break;
-	case COMPUTER:
-		x = c;
-		break;
-	default:
-		break;
-	}
-	int y = 0;
-	switch (island_type_)
-	{
-	case EMPTY:
-		y = c;
-		break;
-	case VOLCANO:
-		y = 2 * c; 
-		break;
-	case BASE:
-		y = 0; 
-		break;
-	default: break;
-	}
-	return g::TexturePainter::rect(x, y, c, c);
+	node_graphics_ = std::make_unique<IslandGraphics>(0,0);
+	arrow_graphics_ = std::make_unique<g::Image>(0,0, "arrow");
+	arrow_graphics_->set_alpha(120);
+	add_child(node_graphics_.get());
+	add_child(arrow_graphics_.get());
 }
+
+

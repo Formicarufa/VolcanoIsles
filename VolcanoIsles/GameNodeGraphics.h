@@ -1,35 +1,43 @@
-﻿#pragma once
-#include "GameEngine/Sprite.h"
-#include "Owner.h"
-#include "IslandType.h"
-#include "GameConstants.h"
+﻿#ifndef GameNodeGraphics_H
+#define GameNodeGraphics_H
 
-class GameNodeGraphics : public g::Sprite
+#include "GameEngine/GraphicsContainer.h"
+#include <memory>
+#include "GameEngine/Image.h"
+#include "GameEngine/Common.h"
+#include "IslandGraphics.h"
+#include "GameNode.h"
+
+class GameNodeGraphics : public g::GraphicsContainer
 {
 public:
+	explicit GameNodeGraphics(GameNode* node);
 
-	GameNodeGraphics(int x, int y)
-		: Sprite(x, y, "island_spritesheet"), owner_(NONE), island_type_(EMPTY)
+
+	void draw(g::TexturePainter& painter, int x0, int y0) override
 	{
+		GameNode  n = *node_;
+		auto pointing_to_node = n.pointing_to_node();
+		if (pointing_to_node != last_target_node_)
+		{
+			last_target_node_ = pointing_to_node;
+			double rot = atan2(pointing_to_node->x() - x(), y() - pointing_to_node->y());
+			arrow_graphics_->set_rotation(common::rad_to_deg(rot));
+		}
+		node_graphics_->set_island_type(n.island_type());
+		node_graphics_->set_owner(n.owner());
+		GraphicsContainer::draw(painter, x0, y0);
 	}
 
-	SDL_Rect get_source_rect() override;
-
-	SDL_Rect get_destination_rect() override
-	{
-		return g::TexturePainter::rect(x(), y(), gameconst::island_size, gameconst::island_size);
-
-	}
-
-	void set_owner(Owner owner)
-	{
-		owner_ = owner;
-	}
-	void set_island_type(IslandType island_type)
-	{
-		island_type_ = island_type;
-	}
 private:
-	Owner owner_;
-	IslandType island_type_;
+
+	std::unique_ptr<g::Image> arrow_graphics_;
+	std::unique_ptr<IslandGraphics> node_graphics_;
+	GameNode* node_;
+	GameNode* last_target_node_;
+
 };
+
+
+#endif // GameNodeGraphics_H
+

@@ -52,7 +52,27 @@ namespace g
 		void set_alpha(int alpha) {
 			alpha_ = alpha;
 		}
-	private:
+
+		int width() const
+		{
+			return width_;
+		}
+
+		int height() const
+		{
+			return height_;
+		}
+
+
+		void set_x(int x)
+		{
+			x_ = x;
+		}
+
+		void set_y(int y)
+		{
+			y_ = y;
+		}
 		int x_, y_;
 		int width_;
 		int height_;

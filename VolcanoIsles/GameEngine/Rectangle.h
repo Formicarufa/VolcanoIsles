@@ -43,6 +43,11 @@ public:
 	int y() override {
 		return y_;
 	}
+
+	int width() const;
+	void set_width(int width);
+	int height() const;
+	void set_height(int height);
 private:
 	int x_, y_;
 	int width_, height_;

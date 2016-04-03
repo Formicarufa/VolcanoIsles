@@ -10,7 +10,11 @@ namespace common
 	{
 		vec.erase(std::remove(vec.begin(), vec.end(), elem));
 	}
-
+	const double PI = 3.14159265359;
+	double inline rad_to_deg(double rad)
+	{
+		return rad / PI * 180;
+	}
 }
 namespace colors
 {
@@ -31,6 +35,10 @@ namespace colors
 	inline SDL_Color white()
 	{
 		return color(255, 255, 255, 0);
+	}
+	inline SDL_Color light_grey()
+	{
+		return color(80, 80, 80, 255);
 	}
 
 }

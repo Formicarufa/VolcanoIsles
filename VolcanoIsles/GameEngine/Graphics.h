@@ -32,8 +32,20 @@ namespace g
 			parent_ = parent;
 		}
 
+
+		bool visible() const
+		{
+			return visible_;
+		}
+
+		void set_visible(bool visible)
+		{
+			visible_ = visible;
+		}
+
 	private:
 		Graphics* parent_;
+		bool visible_;
 	};
 
 
