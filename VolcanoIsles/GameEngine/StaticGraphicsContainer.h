@@ -45,6 +45,10 @@ namespace g
 		{
 			return y_;
 		}
+		void clear()
+		{
+			graphics_list_.clear();
+		}
 
 	private:
 		int x_, y_;

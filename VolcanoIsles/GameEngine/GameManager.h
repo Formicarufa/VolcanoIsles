@@ -95,6 +95,7 @@ namespace g
 				{
 					x -= parent->x();
 					y -= parent->y();
+					parent = parent->parent();
 				}
 				auto collision = obj->point_collision(x, y);
 				auto mouse_over = obj->is_mouse_over();

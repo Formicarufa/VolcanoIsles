@@ -2,9 +2,11 @@
 #define Sprite_H
 #include "Graphics.h"
 #include <SDL.h>
+#include "CollisionComputable.h"
+
 namespace g
 {
-	class Sprite : public Graphics
+	class Sprite : public CollisionComputable
 	{
 
 
@@ -33,6 +35,11 @@ namespace g
 		}
 		virtual SDL_Rect get_source_rect() = 0;
 		virtual SDL_Rect get_destination_rect() = 0;
+		bool point_collision(int x, int y) override
+		{
+			auto rect = get_destination_rect();
+			return x > x_ && x< x_ + rect.w && y> y_ && y < y_ + rect.h;
+		}
 		double rotation() const
 		{
 			return rotation_;
@@ -46,6 +53,17 @@ namespace g
 		{
 
 		}
+
+		void set_x(int x)
+		{
+			x_ = x;
+		}
+
+		void set_y(int y)
+		{
+			y_ = y;
+		}
+
 	protected:
 		Sprite(int x, int y, const std::string& texture_name)
 			: x_(x),

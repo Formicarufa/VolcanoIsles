@@ -29,6 +29,16 @@ public:
 		GraphicsContainer::draw(painter, x0, y0);
 	}
 
+	GameNode* node() const
+	{
+		return node_;
+	}
+
+	std::unique_ptr<IslandGraphics> & node_graphics()
+	{
+		return node_graphics_;
+	}
+
 private:
 
 	std::unique_ptr<g::Image> arrow_graphics_;

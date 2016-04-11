@@ -178,7 +178,9 @@
     <ClInclude Include="IslandGraphics.h" />
     <ClInclude Include="GamePlan.h" />
     <ClInclude Include="GamePlanGraphics.h" />
+    <ClInclude Include="IslandMouseHandler.h" />
     <ClInclude Include="IslandType.h" />
+    <ClInclude Include="PlayerGameControl.h" />
     <ClInclude Include="SDL\include\begin_code.h" />
     <ClInclude Include="SDL\include\close_code.h" />
     <ClInclude Include="SDL\include\SDL.h" />
@@ -282,7 +284,9 @@
     <ClCompile Include="IslandGraphics.cpp" />
     <ClCompile Include="GamePlan.cpp" />
     <ClCompile Include="GamePlanGraphics.cpp" />
+    <ClCompile Include="IslandMouseHandler.cpp" />
     <ClCompile Include="Player.h" />
+    <ClCompile Include="PlayerGameControl.cpp" />
     <ClCompile Include="VolcanoGameDirector.cpp" />
     <ClCompile Include="VolcanoGameState.cpp" />
     <ClCompile Include="VolcanoIsles.cpp" />

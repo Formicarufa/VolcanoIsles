@@ -73,6 +73,7 @@ namespace g
 		{
 			y_ = y;
 		}
+	private:
 		int x_, y_;
 		int width_;
 		int height_;

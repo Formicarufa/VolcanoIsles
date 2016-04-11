@@ -36,11 +36,13 @@ namespace g
 		void removeAction(UpdateAction* a);
 		void removeKeyHandler(KeyHandler* k);
 		void removeMouseClickHandler(CollisionComputable* c, MouseHandler* h);
+		void removeMouseClickHandler(MouseHandler* h);
 		const g::GraphicsContainer & graphics_container() const;
 		const std::vector<UpdateAction*> & actions_vector() const;
 		const std::vector<g::KeyHandler*> & key_handlers() const;
 		const std::vector<std::pair<g::CollisionComputable*, g::MouseHandler*>> & click_handlers() const;
 		void removeMouseMotionHandler(CollisionComputable* c, MouseMotionHandler* h);
+		void removeMouseMotionHandler(MouseMotionHandler* h);
 		const std::vector<std::pair<CollisionComputable*, MouseMotionHandler*>> & mouse_motion_handlers() const;
 	private:
 		GraphicsContainer root_container_;

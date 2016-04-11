@@ -328,6 +328,12 @@
     <ClInclude Include="GameNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerGameControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IslandMouseHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VolcanoIsles.cpp">
@@ -412,6 +418,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGameControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IslandMouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

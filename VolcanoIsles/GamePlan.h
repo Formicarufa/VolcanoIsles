@@ -39,9 +39,17 @@ public:
 		return  &nodes_;
 	}
 
+	std::vector<FireBall> & fire_balls()
+	{
+		return fire_balls_;
+	}
+	void add_fire_ball(GameNode* island)
+	{
+		fire_balls_.emplace_back(island);
+	}
 private:
 	std::vector< std::unique_ptr<GameNode>> nodes_;
-	std::vector< std::unique_ptr<FireBall>> fire_balls_;
+	std::vector< FireBall> fire_balls_;
 	
 	static void err_msg()
 	{
