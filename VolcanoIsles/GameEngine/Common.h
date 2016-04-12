@@ -38,7 +38,7 @@ namespace colors
 	}
 	inline SDL_Color light_grey()
 	{
-		return color(80, 80, 80, 255);
+		return color(200, 200, 200, 255);
 	}
 
 }

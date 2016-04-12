@@ -12,7 +12,7 @@ class GamePlanGraphics: public g::GraphicsContainer
 public:
 
 
-	explicit GamePlanGraphics(GamePlan* gamePlan):GraphicsContainer(0,0),lines_(0, 0),fire_balls_graphics_(0,0),gamePlan_(gamePlan)
+	explicit GamePlanGraphics(GamePlan* gamePlan):GraphicsContainer(0,-30),lines_(0, 0),fire_balls_graphics_(0,0),gamePlan_(gamePlan)
 	{
 		add_child(&lines_);
 		draw_islands();

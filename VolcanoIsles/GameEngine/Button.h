@@ -15,7 +15,7 @@ namespace g
 	public:
 
 		Button(int x, int y, std::string button_image_name, GameState* state)
-			: GraphicsContainer(x, y), enabled_(false),state_(state)
+			: GraphicsContainer(x, y), enabled_(true),state_(state)
 		{
 			button_image_ = std::make_unique<Image>(0, 0, button_image_name);
 			mouse_over_rectangle_ = std::make_unique<Rectangle>(0, 0, 0, 0, colors::light_grey());
@@ -42,7 +42,6 @@ namespace g
 				button_image_->set_alpha(255);
 			}
 		}
-
 		void mouse_over() override
 		{
 			if (!enabled_) return;

@@ -441,6 +441,18 @@
     <Image Include="assets\arrow.png">
       <Filter>Header Files\Resource Files</Filter>
     </Image>
+    <Image Include="assets\accept.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\cancel.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\fireBall.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\rotate_island.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL\lib\SDL2.lib" />

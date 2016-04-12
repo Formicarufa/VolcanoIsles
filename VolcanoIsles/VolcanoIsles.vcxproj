@@ -299,8 +299,12 @@
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\accept.png" />
     <Image Include="assets\arrow.png" />
+    <Image Include="assets\cancel.png" />
+    <Image Include="assets\fireBall.png" />
     <Image Include="assets\island_spritesheet.png" />
+    <Image Include="assets\rotate_island.png" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="SDL\lib\SDL2.lib" />

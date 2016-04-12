@@ -24,7 +24,7 @@ void g::TexturePainter::draw_rectangle(int x, int y, int width, int height, cons
 {
 	set_color(color);
 	SDL_Rect rec = rect(x, y, width, height);
-	SDL_RenderDrawRect(renderer_, &rec);
+	SDL_RenderFillRect(renderer_, &rec);
 }
 
 void g::TexturePainter::draw_texture(int x, int y, int width, int height,int alpha, SDL_Texture* texture, double rotation)
