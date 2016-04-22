@@ -11,7 +11,7 @@ class IslandGraphics : public g::Sprite
 public:
 
 	IslandGraphics(int x, int y)
-		: Sprite(x, y, "island_spritesheet"), owner_(NONE), island_type_(EMPTY)
+		: Sprite(x, y, "island_spritesheet"), owner_(Player::NONE), island_type_(IslandType::EMPTY)
 	{
 	}
 

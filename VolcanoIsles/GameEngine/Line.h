@@ -31,7 +31,7 @@ namespace g
 
 		void draw(TexturePainter& painter, int x0, int y0) override
 		{
-			painter.draw_line(x1_, y1_, x2_, y2_,color_);
+			painter.draw_line(x0+x1_, y0+y1_, x0+x2_, y0+y2_,color_);
 		}
 		SDL_Color color() const
 		{

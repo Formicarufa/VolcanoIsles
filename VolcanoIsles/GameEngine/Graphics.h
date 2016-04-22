@@ -9,7 +9,7 @@ namespace g
 	public:
 
 
-		Graphics(): parent_(nullptr)
+		Graphics(): parent_(nullptr), visible_(true)
 		{
 		}
 

@@ -5,13 +5,14 @@ SDL_Rect IslandGraphics::get_source_rect()
 	int x = 0;
 	switch (owner_)
 	{
-	case NONE:
+
+	case Player::NONE:
 		x = 0;
 		break;
-	case PLAYER:
+	case Player::BLUE:
 		x = 2 * c;
 		break;
-	case COMPUTER:
+	case Player::RED:
 		x = c;
 		break;
 	default:
@@ -20,13 +21,13 @@ SDL_Rect IslandGraphics::get_source_rect()
 	int y = 0;
 	switch (island_type_)
 	{
-	case EMPTY:
+	case IslandType::EMPTY:
 		y = c;
 		break;
-	case VOLCANO:
+	case IslandType::VOLCANO:
 		y = 2 * c; 
 		break;
-	case BASE:
+	case IslandType::BASE:
 		y = 0; 
 		break;
 	default: break;

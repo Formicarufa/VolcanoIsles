@@ -22,7 +22,7 @@ namespace g
 			add_child(mouse_over_rectangle_.get());
 			add_child(button_image_.get());
 			mouse_over_rectangle_->set_visible(false);
-			state_->addMouseMotionHandler(button_image_.get(), this);
+			state_->add_mouse_motion_handler(button_image_.get(), this);
 		}
 
 		bool enabled() const
@@ -61,11 +61,11 @@ namespace g
 
 		void add_click_handler(MouseHandler* h) const
 		{
-			state_->addMouseClickHandler(button_image_.get(), h);
+			state_->add_mouse_click_handler(button_image_.get(), h);
 		}
 		void remove_handler(MouseHandler* h) const
 		{
-			state_->removeMouseClickHandler(button_image_.get(), h);
+			state_->remove_mouse_click_handler(button_image_.get(), h);
 		}
 		~Button()
 		{

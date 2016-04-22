@@ -23,6 +23,9 @@ int main(int argc, char * args[])
 	g::GameManager volcano_game_manager("VOLCANO ISLES", gameconst::HEIGHT, gameconst::WIDTH);
 	volcano_game_manager.set_background_color(colors::white());
 	auto volcanoGame = std::make_unique<VolcanoGameState>();
+	std::unique_ptr<PlayerMouseControl> c1 = std::make_unique<PlayerMouseControl>(volcanoGame.get());
+	std::unique_ptr<PlayerMouseControl> c2 = std::make_unique<PlayerMouseControl>(volcanoGame.get());
+	volcanoGame->set_player_controllers(c1.get(), c2.get());
 	volcanoGame->init();
 	volcano_game_manager.start(std::move(volcanoGame));
 	return 0;

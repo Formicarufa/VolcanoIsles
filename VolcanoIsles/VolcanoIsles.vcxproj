@@ -89,7 +89,7 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -115,7 +115,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
@@ -154,6 +154,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractGameControl.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameEngine\Button.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="GameEngine\Common.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="FireBallGraphics.h" />
+    <ClInclude Include="GameEngine\DelayTimer.h" />
     <ClInclude Include="GameEngine\GameManager.h" />
     <ClInclude Include="GameEngine\GameState.h" />
     <ClInclude Include="GameEngine\Graphics.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="GameEngine\MouseHandler.h" />
     <ClInclude Include="GameEngine\MouseMotionHandler.h" />
     <ClInclude Include="GameEngine\Rectangle.h" />
+    <ClInclude Include="RotationControl.h" />
     <ClInclude Include="GameEngine\Sprite.h" />
     <ClInclude Include="GameEngine\StaticGraphicsContainer.h" />
     <ClInclude Include="GameNode.h" />
@@ -180,7 +183,10 @@
     <ClInclude Include="GamePlanGraphics.h" />
     <ClInclude Include="IslandMouseHandler.h" />
     <ClInclude Include="IslandType.h" />
-    <ClInclude Include="PlayerGameControl.h" />
+    <ClInclude Include="MedalsManager.h" />
+    <ClInclude Include="PlayerAIControl.h" />
+    <ClInclude Include="PlayerMouseControl.h" />
+    <ClInclude Include="PlayerIcon.h" />
     <ClInclude Include="SDL\include\begin_code.h" />
     <ClInclude Include="SDL\include\close_code.h" />
     <ClInclude Include="SDL\include\SDL.h" />
@@ -260,11 +266,13 @@
     <ClInclude Include="VolcanoGameState.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractGameControl.cpp" />
     <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine\Button.cpp" />
     <ClCompile Include="GameEngine\CollisionComputable.cpp" />
     <ClCompile Include="FireBallGraphics.cpp" />
+    <ClCompile Include="GameEngine\DelayTimer.cpp" />
     <ClCompile Include="GameEngine\GameManager.cpp" />
     <ClCompile Include="GameEngine\GameState.cpp" />
     <ClCompile Include="GameEngine\Graphics.cpp" />
@@ -275,6 +283,7 @@
     <ClCompile Include="GameEngine\MouseHandler.cpp" />
     <ClCompile Include="GameEngine\MouseMotionHandler.cpp" />
     <ClCompile Include="GameEngine\Rectangle.cpp" />
+    <ClCompile Include="RotationControl.cpp" />
     <ClCompile Include="GameEngine\Sprite.cpp" />
     <ClCompile Include="GameEngine\StaticGraphicsContainer.cpp" />
     <ClCompile Include="GameEngine\TexturePainter.cpp" />
@@ -285,8 +294,11 @@
     <ClCompile Include="GamePlan.cpp" />
     <ClCompile Include="GamePlanGraphics.cpp" />
     <ClCompile Include="IslandMouseHandler.cpp" />
+    <ClCompile Include="MedalsManager.cpp" />
     <ClCompile Include="Player.h" />
-    <ClCompile Include="PlayerGameControl.cpp" />
+    <ClCompile Include="PlayerAIControl.cpp" />
+    <ClCompile Include="PlayerMouseControl.cpp" />
+    <ClCompile Include="PlayerIcon.cpp" />
     <ClCompile Include="VolcanoGameDirector.cpp" />
     <ClCompile Include="VolcanoGameState.cpp" />
     <ClCompile Include="VolcanoIsles.cpp" />
@@ -294,6 +306,7 @@
   <ItemGroup>
     <None Include="libpng16-16.dll" />
     <None Include="maps\rectangle.map" />
+    <None Include="maps\small.map" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />
@@ -304,6 +317,11 @@
     <Image Include="assets\cancel.png" />
     <Image Include="assets\fireBall.png" />
     <Image Include="assets\island_spritesheet.png" />
+    <Image Include="assets\medal_black.png" />
+    <Image Include="assets\medal_blue.png" />
+    <Image Include="assets\medal_red.png" />
+    <Image Include="assets\player_icon.png" />
+    <Image Include="assets\restart_game.png" />
     <Image Include="assets\rotate_island.png" />
   </ItemGroup>
   <ItemGroup>

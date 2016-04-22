@@ -26,17 +26,17 @@ namespace g
 		{
 
 		}
-		void addGraphics(Graphics* g);
-		void addAction(UpdateAction* a);
-		void addKeyHandler(KeyHandler* k);
-		void addMouseClickHandler(CollisionComputable* c, MouseHandler* h);
-		void addMouseMotionHandler(CollisionComputable* c, MouseMotionHandler* h);
+		void add_graphics(Graphics* g);
+		void add_action(UpdateAction* a);
+		void add_key_handler(KeyHandler* k);
+		void add_mouse_click_handler(CollisionComputable* c, MouseHandler* h);
+		void add_mouse_motion_handler(CollisionComputable* c, MouseMotionHandler* h);
 
-		void removeGraphics(Graphics* g);
-		void removeAction(UpdateAction* a);
-		void removeKeyHandler(KeyHandler* k);
-		void removeMouseClickHandler(CollisionComputable* c, MouseHandler* h);
-		void removeMouseClickHandler(MouseHandler* h);
+		void remove_graphics(Graphics* g);
+		void remove_action(UpdateAction* a);
+		void remove_key_handler(KeyHandler* k);
+		void remove_mouse_click_handler(CollisionComputable* c, MouseHandler* h);
+		void remove_mouse_click_handler(MouseHandler* h);
 		const g::GraphicsContainer & graphics_container() const;
 		const std::vector<UpdateAction*> & actions_vector() const;
 		const std::vector<g::KeyHandler*> & key_handlers() const;

@@ -13,6 +13,11 @@ class GameNodeGraphics : public g::GraphicsContainer
 public:
 	explicit GameNodeGraphics(GameNode* node);
 
+	//Returns: value in radians.
+	double get_direction_to_node(GameNode* pointing_to_node)
+	{
+		return atan2(pointing_to_node->x() - x(), y() - pointing_to_node->y())-common::PI/2;
+	}
 
 	void draw(g::TexturePainter& painter, int x0, int y0) override
 	{
@@ -21,8 +26,11 @@ public:
 		if (pointing_to_node != last_target_node_)
 		{
 			last_target_node_ = pointing_to_node;
-			double rot = atan2(pointing_to_node->x() - x(), y() - pointing_to_node->y());
+			double rot = get_direction_to_node(pointing_to_node);
 			arrow_graphics_->set_rotation(common::rad_to_deg(rot));
+			auto transl = gameconst::island_size/2;
+			arrow_graphics_->set_x(static_cast<int>(cos(rot)*transl));
+			arrow_graphics_->set_y(static_cast<int>(sin(rot)*transl));
 		}
 		node_graphics_->set_island_type(n.island_type());
 		node_graphics_->set_owner(n.owner());
@@ -38,7 +46,14 @@ public:
 	{
 		return node_graphics_;
 	}
-
+	void hide_arrow_graphics() const
+	{
+		arrow_graphics_->set_visible(false);
+	}
+	void show_arrow_graphics() const
+	{
+		arrow_graphics_->set_visible(true);
+	}
 private:
 
 	std::unique_ptr<g::Image> arrow_graphics_;

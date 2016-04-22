@@ -12,5 +12,6 @@ GameNode* FireBall::last_node() const
 
 void FireBall::set_node(GameNode* node)
 {
+	last_node_ = node_;
 	node_ = node;
 }

@@ -12,15 +12,20 @@ class GamePlanGraphics: public g::GraphicsContainer
 public:
 
 
-	explicit GamePlanGraphics(GamePlan* gamePlan):GraphicsContainer(0,-30),lines_(0, 0),fire_balls_graphics_(0,0),gamePlan_(gamePlan)
+	void draw()
 	{
-		add_child(&lines_);
 		draw_islands();
-		add_child(&fire_balls_graphics_);
-		draw_connecting_lines();
 		update_fireball_positions();
+		draw_connecting_lines();
 	}
 
+	explicit GamePlanGraphics(GamePlan* gamePlan):GraphicsContainer(0,-30),lines_(0, 0),fire_balls_graphics_(0,0),island_graphics_(0,0),gamePlan_(gamePlan)
+	{
+		add_child(&lines_);
+		add_child(&island_graphics_);
+		add_child(&fire_balls_graphics_);
+
+	}
 	void update_fireball_positions()
 	{
 		fire_balls_graphics_.clear();
@@ -41,6 +46,11 @@ public:
 		return game_nodes_;
 	}
 
+	GamePlan* game_plan() const
+	{
+		return gamePlan_;
+	}
+
 private:
 	void draw_islands()
 	{
@@ -48,7 +58,7 @@ private:
 		for (auto & x : *game_nodes)
 		{
 			auto g = std::make_unique<GameNodeGraphics>(x.get());
-			add_child(g.get());
+			island_graphics_.add_child(g.get());
 			game_nodes_.push_back(move(g));
 		}
 	}
@@ -56,6 +66,7 @@ private:
 	g::StaticGraphicsContainer lines_;
 	std::vector<std::unique_ptr<GameNodeGraphics>> game_nodes_;
 	g::StaticGraphicsContainer fire_balls_graphics_;
+	g::GraphicsContainer island_graphics_;
 	GamePlan* gamePlan_;
 	void connect_nodes(const GameNode& m, const GameNode& n);
 	void draw_connecting_lines();

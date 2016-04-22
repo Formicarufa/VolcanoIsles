@@ -2,11 +2,11 @@
 #define Player_H
 
 
-enum Player
+enum class Player
 {
 	NONE,
-	PLAYER,
-	COMPUTER
+	BLUE,
+	RED
 };
 
 

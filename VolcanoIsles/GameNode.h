@@ -8,7 +8,7 @@
 class GameNode
 {
 public:
-	GameNode(std::vector<std::size_t>&& neighbour_indices, int x, int y): neighbour_indices_(std::move(neighbour_indices)), island_type_(EMPTY), owner_(NONE), pointing_to_node_(nullptr), x_(x),y_(y)
+	GameNode(std::vector<std::size_t>&& neighbour_indices, int x, int y, std::size_t index): neighbour_indices_(std::move(neighbour_indices)), island_type_(IslandType::EMPTY), owner_(Player::NONE), pointing_to_node_(nullptr), x_(x),y_(y), index_(index)
 	{
 		
 	}
@@ -55,13 +55,18 @@ public:
 	}
 
 
+	std::size_t index() const
+	{
+		return index_;
+	}
+
 private:
 	std::vector<std::size_t> neighbour_indices_;
 	IslandType island_type_;
 	Player owner_;
 	GameNode* pointing_to_node_;
 	int x_, y_;
-
+	std::size_t index_;
 };
 
 

@@ -7,7 +7,7 @@
 #include "Common.h"
 #include "Graphics.h"
 #include "MouseMotionHandler.h"
-
+#include <unordered_set>
 namespace g
 {
 
@@ -17,7 +17,7 @@ namespace g
 	public:
 
 		GameManager(std::string game_name, int height, int width)
-			: current_state_(), name_(game_name), height_(height), window_(nullptr), renderer_(nullptr), running_(true), width_(width), painter_(nullptr), background_color_(colors::black())
+			: current_state_(), width_(width), name_(game_name), height_(height), window_(nullptr), renderer_(nullptr), running_(true), painter_(nullptr), background_color_(colors::black())
 		{
 
 		}
@@ -64,7 +64,7 @@ namespace g
 				}
 				if (testedObject->point_collision(x, y))
 				{
-					h.second->handle_mouse_event(x, y);
+					h.second->handle_mouse_event(testedObject, x, y);
 				}
 			}
 		}
@@ -83,6 +83,8 @@ namespace g
 		{
 			auto & handlers = current_state_->mouse_motion_handlers();
 			auto copy(handlers);
+			std::unordered_set<CollisionComputable*> mouse_entered;
+			std::unordered_set<CollisionComputable*> mouse_left;
 			for (auto h : copy)
 			{
 				auto x = motion.x;
@@ -101,17 +103,19 @@ namespace g
 				auto mouse_over = obj->is_mouse_over();
 				if (collision)
 				{
-					if (! mouse_over)
+					if (! mouse_over || mouse_entered.find(obj)!=mouse_entered.end())
 					{
 						obj->set_mouse_over(true);
 						handler->mouse_over();
+						mouse_entered.insert(obj);
 					}
 				} else
 				{
-					if (mouse_over)
+					if (mouse_over || mouse_left.find(obj)!= mouse_left.end())
 					{
 						obj->set_mouse_over(false);
 						handler->mouse_out();
+						mouse_left.insert(obj);
 					}
 				}
 

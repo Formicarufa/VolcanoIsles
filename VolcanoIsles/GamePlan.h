@@ -47,6 +47,20 @@ public:
 	{
 		fire_balls_.emplace_back(island);
 	}
+	void reset()
+	{
+		fire_balls_.clear();
+		for (auto& i : nodes_)
+		{
+			i->set_owner(Player::NONE);
+			i->set_island_type(IslandType::EMPTY);
+			i->set_pointing_to_node(random_neighbor(i.get()));
+		}
+		nodes_[0]->set_owner(Player::BLUE);
+		nodes_[nodes_.size()-1]->set_owner( Player::RED);
+		nodes_[0]->set_island_type(IslandType::BASE);
+		nodes_[nodes_.size()-1]->set_island_type(IslandType::BASE);
+	}
 private:
 	std::vector< std::unique_ptr<GameNode>> nodes_;
 	std::vector< FireBall> fire_balls_;

@@ -24,7 +24,7 @@ namespace g {
 			renderer_ = renderer;
 		}
 		SDL_Texture* get_texture_(const std::string& name);
-		void set_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+		void set_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const;
 
 		void set_color(SDL_Color c)
 		{
@@ -32,7 +32,7 @@ namespace g {
 		}
 
 		void draw_rectangle(int x, int y, int width, int height, const SDL_Color color);
-		void draw_texture(int x, int y, int width, int height, int alpha, SDL_Texture* texture, double rotation);
+		void draw_texture(int x, int y, int width, int height, Uint8 alpha, SDL_Texture* texture, double rotation) const;
 
 		void draw_line(int x1, int y1, int x2, int y2, SDL_Color color)
 		{

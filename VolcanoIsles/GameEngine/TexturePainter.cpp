@@ -1,5 +1,6 @@
 ﻿#include "TexturePainter.h"
 #include <SDL_image.h>
+#include <iostream>
 
 SDL_Texture* g::TexturePainter::get_texture_(const std::string& name)
 {
@@ -11,11 +12,12 @@ SDL_Texture* g::TexturePainter::get_texture_(const std::string& name)
 	std::string filename ="assets/" +  name + ".png";
 	SDL_Surface*	surface = IMG_Load(filename.c_str());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer_, surface);
+	if (!surface || !texture) std::cout << "Error loading texture: " << name;
 	textures_[name] = texture;
 	return texture;
 }
 
-void g::TexturePainter::set_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void g::TexturePainter::set_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
 {
 	SDL_SetRenderDrawColor(renderer_, r, g, b, a);
 }
@@ -27,7 +29,7 @@ void g::TexturePainter::draw_rectangle(int x, int y, int width, int height, cons
 	SDL_RenderFillRect(renderer_, &rec);
 }
 
-void g::TexturePainter::draw_texture(int x, int y, int width, int height,int alpha, SDL_Texture* texture, double rotation)
+void g::TexturePainter::draw_texture(int x, int y, int width, int height,Uint8 alpha, SDL_Texture* texture, double rotation) const
 {
 	SDL_SetTextureAlphaMod(texture, alpha);
 	SDL_Rect source = rect(0, 0, width, height);

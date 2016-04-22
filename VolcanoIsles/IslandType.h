@@ -1,7 +1,7 @@
 #ifndef IslandType_H
 #define IslandType_H
 
-enum IslandType
+enum class IslandType
 {
 	EMPTY, VOLCANO, BASE
 };

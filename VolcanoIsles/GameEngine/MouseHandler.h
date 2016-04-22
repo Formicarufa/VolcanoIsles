@@ -3,6 +3,8 @@
 
 namespace g
 {
+	class CollisionComputable;
+
 	class MouseHandler
 	{
 	public:
@@ -10,7 +12,7 @@ namespace g
 		{
 		}
 
-		virtual void handle_mouse_event(int x, int y) = 0;
+		virtual void handle_mouse_event(CollisionComputable*c,  int x, int y) = 0;
 	};
 
 }

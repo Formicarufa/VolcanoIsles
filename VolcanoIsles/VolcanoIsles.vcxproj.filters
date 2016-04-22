@@ -328,10 +328,28 @@
     <ClInclude Include="GameNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerGameControl.h">
+    <ClInclude Include="IslandMouseHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IslandMouseHandler.h">
+    <ClInclude Include="MedalsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMouseControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractGameControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAIControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\DelayTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -420,10 +438,28 @@
     <ClCompile Include="GameNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerGameControl.cpp">
+    <ClCompile Include="IslandMouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IslandMouseHandler.cpp">
+    <ClCompile Include="MedalsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIcon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMouseControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractGameControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAIControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine\DelayTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RotationControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -433,6 +469,7 @@
     <None Include="maps\rectangle.map" />
     <None Include="libpng16-16.dll" />
     <None Include="zlib1.dll" />
+    <None Include="maps\small.map" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\island_spritesheet.png">
@@ -451,6 +488,21 @@
       <Filter>Header Files\Resource Files</Filter>
     </Image>
     <Image Include="assets\rotate_island.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\restart_game.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\player_icon.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\medal_black.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\medal_blue.png">
+      <Filter>Header Files\Resource Files</Filter>
+    </Image>
+    <Image Include="assets\medal_red.png">
       <Filter>Header Files\Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -20,7 +20,7 @@ public:
 
 	}
 
-	void handle_mouse_event(int x, int y) override
+	void handle_mouse_event(g::CollisionComputable*, int , int ) override
 	{
 		if (director_->player_on_turn() == player_)
 		{
@@ -28,15 +28,18 @@ public:
 			{
 				if (director_->can_create_volcano(my_node_)) {
 					director_->create_volcano(my_node_);
+					mouse_out();
 				}
-				else if (my_node_->island_type() == VOLCANO)
+				else if (director_->can_produce_fire(my_node_))
 				{
 					director_->produce_fire(my_node_);
+					mouse_out();
 				}
 			}
 			else if (director_->can_occupy(my_node_))
 			{
 				director_->ocuppy_island(my_node_);
+				mouse_out();
 			}
 		}
 	}
@@ -52,12 +55,12 @@ public:
 			if (my_node_->owner() == player_)
 			{
 				if (director_->can_create_volcano(my_node_)) {
-					island_graphics_->set_island_type(VOLCANO);
+					island_graphics_->set_island_type(IslandType::VOLCANO);
 					island_graphics_->set_x(x);
 					island_graphics_->set_y(y);
 					island_graphics_->set_visible(true);
 				}
-				else if (my_node_->island_type() == VOLCANO)
+				else if (director_->can_produce_fire(my_node_))
 				{
 					fireball_graphics_->set_x(x);
 					fireball_graphics_->set_y(y);
@@ -66,7 +69,7 @@ public:
 			}
 			else if (director_->can_occupy(my_node_))
 			{
-				island_graphics_->set_island_type(EMPTY);
+				island_graphics_->set_island_type(IslandType::EMPTY);
 				island_graphics_->set_x(x);
 				island_graphics_->set_y(y);
 				island_graphics_->set_visible(true);

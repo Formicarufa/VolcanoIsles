@@ -13,7 +13,7 @@ namespace g
 
 		Image(int x, int y, const std::string& texture_name)
 			: x_(x),
-			y_(y), width_(0), height_(0), alpha_(255), rotation_(0), texture_(nullptr),
+			y_(y), width_(0), height_(0), alpha_(static_cast<Uint8>(255)), rotation_(0), texture_(nullptr),
 			texture_name_(texture_name)
 		{
 		}
@@ -49,7 +49,7 @@ namespace g
 		int y() override {
 			return y_;
 		}
-		void set_alpha(int alpha) {
+		void set_alpha(Uint8 alpha) {
 			alpha_ = alpha;
 		}
 
@@ -77,7 +77,7 @@ namespace g
 		int x_, y_;
 		int width_;
 		int height_;
-		int alpha_;
+		Uint8 alpha_;
 		double rotation_;
 		SDL_Texture* texture_;
 		std::string texture_name_;

@@ -15,6 +15,13 @@ namespace common
 	{
 		return rad / PI * 180;
 	}
+	//Deletes the element with index "at", does not retain the order of the elements.
+	template<typename T>
+	void vector_remove(std::vector<T>& vec, std::size_t at)
+	{
+		vec.at(at) = vec.back();
+		vec.pop_back();
+	}
 }
 namespace colors
 {
