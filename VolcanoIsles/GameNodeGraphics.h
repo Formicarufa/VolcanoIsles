@@ -7,16 +7,18 @@
 #include "GameEngine/Common.h"
 #include "IslandGraphics.h"
 #include "GameNode.h"
+#include "GamePlan.h"
 
 class GameNodeGraphics : public g::GraphicsContainer
 {
 public:
-	explicit GameNodeGraphics(GameNode* node);
+	GameNodeGraphics(GameNode* node, GamePlan* plan);
 
 	//Returns: value in radians.
-	double get_direction_to_node(GameNode* pointing_to_node)
+	double get_direction_to_node(node_index pointing_to_node)
 	{
-		return atan2(pointing_to_node->x() - x(), y() - pointing_to_node->y())-common::PI/2;
+		auto n = plan_->get_node_at(pointing_to_node);
+		return atan2(n->x() - x(), y() - n->y())-common::PI/2;
 	}
 
 	void draw(g::TexturePainter& painter, int x0, int y0) override
@@ -59,8 +61,8 @@ private:
 	std::unique_ptr<g::Image> arrow_graphics_;
 	std::unique_ptr<IslandGraphics> node_graphics_;
 	GameNode* node_;
-	GameNode* last_target_node_;
-
+	node_index last_target_node_;
+	GamePlan* plan_;
 };
 
 

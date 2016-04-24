@@ -2,7 +2,7 @@
 #define Common_H
 #include <vector>
 #include <algorithm>
-
+#include <SDL.h>
 namespace common
 {
 	template <typename T>

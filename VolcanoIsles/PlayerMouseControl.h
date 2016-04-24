@@ -96,7 +96,11 @@ public:
 		display_buttons();
 		add_island_actions_handlers();
 	}
-	void rotate_island(GameNode* rotated, GameNode* new_direction) const
+	void rotate_island(GameNode* rotated,  GameNode* new_direction) const
+	{
+		director()->change_direction(rotated, new_direction);
+	}
+	void rotate_island(GameNode* rotated, node_index new_direction) const
 	{
 		director()->change_direction(rotated, new_direction);
 	}

@@ -5,14 +5,16 @@
 #include "Player.h"
 
 
+	using node_index = std::size_t;
+	const node_index NODE_UNDEF = static_cast<std::size_t>(- 1);
 class GameNode
 {
 public:
-	GameNode(std::vector<std::size_t>&& neighbour_indices, int x, int y, std::size_t index): neighbour_indices_(std::move(neighbour_indices)), island_type_(IslandType::EMPTY), owner_(Player::NONE), pointing_to_node_(nullptr), x_(x),y_(y), index_(index)
+	GameNode(std::vector<node_index>&& neighbour_indices, int x, int y, std::size_t index): neighbour_indices_(std::move(neighbour_indices)), island_type_(IslandType::EMPTY), owner_(Player::NONE), pointing_to_node_(NODE_UNDEF), x_(x),y_(y), index_(index)
 	{
 		
 	}
-	const std::vector<std::size_t> & neighbour_indices() const
+	const std::vector<node_index> & neighbour_indices() const
 	{
 		return neighbour_indices_;
 	}
@@ -26,10 +28,14 @@ public:
 		owner_ = owner;
 	}
 	void set_pointing_to_node(GameNode* node) {
+		pointing_to_node_ = node->index();
+
+	}
+	void set_pointing_to_node(node_index node) {
 		pointing_to_node_ = node;
 
 	}
-	GameNode* pointing_to_node() const
+	node_index pointing_to_node() const
 	{
 		return pointing_to_node_;
 	}
@@ -61,12 +67,12 @@ public:
 	}
 
 private:
-	std::vector<std::size_t> neighbour_indices_;
+	std::vector<node_index> neighbour_indices_;
 	IslandType island_type_;
 	Player owner_;
-	GameNode* pointing_to_node_;
+	node_index pointing_to_node_;
 	int x_, y_;
-	std::size_t index_;
+	node_index index_;
 };
 
 

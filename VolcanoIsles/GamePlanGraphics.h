@@ -34,7 +34,7 @@ public:
 		auto d = gameconst::fire_size / 2;
 		for(auto & x : fire_balls)
 		{
-			auto node = x.node();
+			auto node = gamePlan_->get_node_at(x.node());
 			std::unique_ptr<FireBallGraphics> gr = std::make_unique<FireBallGraphics>(node->x()+c-d, node->y()+c-d);
 			fire_balls_graphics_.add_child(std::move(gr));
 			;
@@ -54,10 +54,10 @@ public:
 private:
 	void draw_islands()
 	{
-		const std::vector<std::unique_ptr<GameNode>>* game_nodes = gamePlan_->nodes();
-		for (auto & x : *game_nodes)
+		std::vector<GameNode>& game_nodes = gamePlan_->nodes();
+		for (auto & x : game_nodes)
 		{
-			auto g = std::make_unique<GameNodeGraphics>(x.get());
+			auto g = std::make_unique<GameNodeGraphics>(&x, gamePlan_);
 			island_graphics_.add_child(g.get());
 			game_nodes_.push_back(move(g));
 		}

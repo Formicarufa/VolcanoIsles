@@ -13,7 +13,7 @@
 class VolcanoGameState : public g::GameState, public g::UpdateAction, public g::MouseHandler
 {
 public:
-	//before the state
+	//map name: path to the map relative to the game directory.
 	VolcanoGameState() : planGraphics_(&plan_), director_(&plan_), blue_control_(nullptr), red_control_(nullptr),
 	                     believed_turn_(0), believed_player_(Player::NONE),
 		restart_button_(gameconst::WIDTH - gameconst::island_size - 30, gameconst::HEIGHT - gameconst::island_size - 30, "restart_game", this),
@@ -48,6 +48,9 @@ public:
 			start_turn(new_player);
 			icon_.set_player(new_player);
 			believed_player_ = new_player;
+		} else
+		{
+			continue_playing(believed_player_);
 		}
 
 	}
@@ -57,17 +60,20 @@ public:
 	}
 
 
-	void init()
+	bool init(std::string map_name)
 	{
 		add_action(this);
-		plan_.load("maps/small.map");
+		if (!plan_.load(map_name))
+		{
+			return false;
+		}
 		planGraphics_.draw();
 		add_graphics(&planGraphics_);
 		restart_button_.add_click_handler(this);
 		add_graphics(&restart_button_);
 		add_graphics(&medals_);
 		add_graphics(&icon_);
-
+		return true;
 
 	}
 

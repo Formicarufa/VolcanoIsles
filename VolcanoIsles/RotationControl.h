@@ -84,7 +84,8 @@ public:
 	void generate_neighbours_list()
 	{
 		ordered_neighbours_.clear();
-		auto neighbours = graphics_->game_plan()->get_neighbours_of(rotated_node_->node());
+		//auto neighbours = graphics_->game_plan()->get_neighbours_of(rotated_node_->node());
+		auto neighbours = rotated_node_->node()->neighbour_indices();
 		for (auto n: neighbours)
 		{
 			ordered_neighbours_.emplace(rotated_node_->get_direction_to_node(n), n);
@@ -112,8 +113,8 @@ private:
 	g::GraphicsContainer group_;
 	GameNodeGraphics* rotated_node_;
 	g::Image arrow_image_;
-	std::set<std::pair<double, GameNode*>> ordered_neighbours_;
-	std::set<std::pair<double, GameNode*>>::iterator index;
+	std::set<std::pair<double, node_index>> ordered_neighbours_;
+	std::set<std::pair<double, node_index>>::iterator index;
 	Player player_;
 	bool is_active_;
 	void next_neighbour()

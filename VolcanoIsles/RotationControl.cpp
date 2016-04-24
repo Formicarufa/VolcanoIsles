@@ -17,7 +17,7 @@ void RotationControl::deactivate()
 void RotationControl::accept()
 {
 	GameNode* rotated = rotated_node_->node();
-	GameNode* direction = index->second;
+	auto direction = index->second;
 	deactivate();
 	pgc_->rotate_island(rotated, direction);
 	pgc_->reactivate();

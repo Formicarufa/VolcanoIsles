@@ -10,7 +10,7 @@ namespace g
 	class Image : public g::CollisionComputable
 	{
 	public:
-
+		//Name of the texture: name of a png image without suffix.
 		Image(int x, int y, const std::string& texture_name)
 			: x_(x),
 			y_(y), width_(0), height_(0), alpha_(static_cast<Uint8>(255)), rotation_(0), texture_(nullptr),

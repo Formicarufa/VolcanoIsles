@@ -155,12 +155,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractGameControl.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="FireBall.h" />
     <ClInclude Include="GameConstants.h" />
     <ClInclude Include="GameEngine\Button.h" />
     <ClInclude Include="GameEngine\CollisionComputable.h" />
+    <ClInclude Include="CommandType.h" />
     <ClInclude Include="GameEngine\Common.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="FireBallGraphics.h" />
     <ClInclude Include="GameEngine\DelayTimer.h" />
     <ClInclude Include="GameEngine\GameManager.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="GameEngine\MouseHandler.h" />
     <ClInclude Include="GameEngine\MouseMotionHandler.h" />
     <ClInclude Include="GameEngine\Rectangle.h" />
+    <ClInclude Include="MiniMax.h" />
     <ClInclude Include="RotationControl.h" />
     <ClInclude Include="GameEngine\Sprite.h" />
     <ClInclude Include="GameEngine\StaticGraphicsContainer.h" />
@@ -267,11 +269,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractGameControl.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="FireBall.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEngine\Button.cpp" />
     <ClCompile Include="GameEngine\CollisionComputable.cpp" />
     <ClCompile Include="FireBallGraphics.cpp" />
+    <ClCompile Include="CommandType.cpp" />
     <ClCompile Include="GameEngine\DelayTimer.cpp" />
     <ClCompile Include="GameEngine\GameManager.cpp" />
     <ClCompile Include="GameEngine\GameState.cpp" />
@@ -283,6 +286,7 @@
     <ClCompile Include="GameEngine\MouseHandler.cpp" />
     <ClCompile Include="GameEngine\MouseMotionHandler.cpp" />
     <ClCompile Include="GameEngine\Rectangle.cpp" />
+    <ClCompile Include="MiniMax.cpp" />
     <ClCompile Include="RotationControl.cpp" />
     <ClCompile Include="GameEngine\Sprite.cpp" />
     <ClCompile Include="GameEngine\StaticGraphicsContainer.cpp" />
@@ -305,8 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="libpng16-16.dll" />
+    <None Include="maps\close_enemies.map" />
     <None Include="maps\rectangle.map" />
-    <None Include="maps\small.map" />
+    <None Include="maps\standard.map" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />

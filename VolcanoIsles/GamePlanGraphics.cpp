@@ -13,14 +13,14 @@ void GamePlanGraphics::connect_nodes(const GameNode& m, const GameNode& n)
 void GamePlanGraphics::draw_connecting_lines()
 {
 	std::size_t index = 0;
-	auto  nodes = gamePlan_->nodes();
-	for (auto & node : *nodes)
+	auto & nodes = gamePlan_->nodes();
+	for (auto & node : nodes)
 	{
-		for (std::size_t n_index : node->neighbour_indices())
+		for (std::size_t n_index : node.neighbour_indices())
 		{
 			if (n_index > index)
 			{
-				connect_nodes(*node, *gamePlan_->get_node_at(n_index));
+				connect_nodes(node, *gamePlan_->get_node_at(n_index));
 			}
 
 		}

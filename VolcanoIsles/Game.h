@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <SDL_image.h>
+//DEPRECATED TEST CLASS.
 class Game {
 public:
 	Game() : renderer_(nullptr), pWindow_(nullptr), running_(false) {}

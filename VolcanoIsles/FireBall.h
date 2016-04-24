@@ -3,28 +3,32 @@
 #include "GameNode.h"
 
 
+class GamePlan;
+
 class FireBall
 {
 public:
 
 
 	explicit FireBall(GameNode* node)
-		: node_(node), last_node_(nullptr)
+		: node_(node->index()), last_node_(NODE_UNDEF)
 	{
 
 	}
 
-	GameNode* node() const;
-	GameNode* last_node() const;
-	void set_node(GameNode* node);
-	void move()
+	explicit FireBall(node_index node)
+		: node_(node), last_node_(NODE_UNDEF)
 	{
-		last_node_ = node_;
-		node_ = node_->pointing_to_node();
+
 	}
+
+	node_index node() const;
+	node_index last_node() const;
+	void set_node(node_index node);
+	void move(GamePlan& plan);
 private:
-	GameNode* node_;
-	GameNode* last_node_;
+	node_index node_;
+	node_index last_node_;
 };
 
 
